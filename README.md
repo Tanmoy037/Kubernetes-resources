@@ -39,3 +39,17 @@ monolithic and microservices. To understand the concept correctly, think of a mo
 Deployment with Monolithic vs Microservice architecture:-
 
 Monolithic applications take more time to deploy and are not a fail-fast model. In contrast, in microservices, you can deploy individual components. You can deploy daily, even hourly, when you have minimal changes. You can deploy those changes on individual components in a light production environment. So, yes, there are companies that are doing that. Whether you have a simple application or a simple component change that you want to deploy on a live application, you can do that. In contrast, in monolithic, a small change, you have to deploy the entire stack again, making a deployment a bit harder than in microservices architecture.
+
+Kubernetes object:-
+
+In Kubernetes, everything happens by the Kubernetes objects. So whatever we want to create, we are creating a Kubernetes object. Now to start, there are two ways. One is the imperative way, and another way is the declarative way via the YAML files. You can also use JSON to create the objects directly or the curl commands, or the CLI SDKs if you are into programming or want to make the resources via the codes.
+
+View API resources command:-
+
+Also, if you want to see the API resources, use the command kubectl api-resources. You will see all the API resources that we can create and some of the short names that we can use. For namespaces, you can use the command kubectl get namespace or kubectl get ns. So you can see the short names. All the API versions of different objects have a listing on the resource list. If you're unsure which object belongs to which API version, you can see them from using kubectl api-resources.
+
+Kubernetes namespace:-
+
+In Kubernetes, namespaces are a way to provide isolated environments to different teams or groups within the same cluster with the specific amount of resource quota and other policies enforced. You can think of it as multiple virtual clusters within the same physical cluster or the same cluster.
+
+
