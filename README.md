@@ -1,12 +1,12 @@
 # Kubernetes
 
-What is kubernetes?
+1)What is kubernetes?
 
 ubernetes is a platform-agnostic system for automating the deployment, scaling, and management of containerized applications. It helps you deploy and manage applications in a consistent and reliable manner, regardless of where they are running, and provides a way to achieve high availability by automatically replicating and rescheduling applications across multiple machine.
 Kubernetes (also known as K8s) is an open-source system. It was originally developed by Google and they donated to CNCF in 2014 and is now maintained by the Cloud Native Computing Foundation (CNCF).
 So, basically Kubernetes is a container orchestration tool.
 
-Why we should use Kubernetes?
+2)Why we should use Kubernetes?
 
 Kubernetes is its ability to automate the deployment, scaling, and management of applications in a consistent and reliable manner. It provides features such as self-healing, rolling updates, and resource management, which make it easier to deploy and manage applications at scale.
 
@@ -14,7 +14,7 @@ Introduction to container orchestration:-
 
 We know that we can pack this application as the images with all its libraries and dependencies and run them as containers. So running a few containers is fine, but when you see a production-ready scenario where you want to run thousands of containers, you need container orchestration because you cannot create, manage, and do many things manually.
 
-Kubernetes architecture:-
+3)Kubernetes architecture:-
 
 What is Kubelet in Kubernetes?
 
@@ -32,7 +32,7 @@ ETCD is a highly available key-value database for Kubernetes that stores all the
 
 
 
-Monolithic and microservice:-
+4)Monolithic and microservice:-
 
 monolithic and microservices. To understand the concept correctly, think of a movie ticket booking application. Now, whenever you try to book a ticket, go to the UI, sign up, book a ticket, go to the payment checkout, and get a movie ticket confirmation.
 
@@ -40,19 +40,19 @@ Deployment with Monolithic vs Microservice architecture:-
 
 Monolithic applications take more time to deploy and are not a fail-fast model. In contrast, in microservices, you can deploy individual components. You can deploy daily, even hourly, when you have minimal changes. You can deploy those changes on individual components in a light production environment. So, yes, there are companies that are doing that. Whether you have a simple application or a simple component change that you want to deploy on a live application, you can do that. In contrast, in monolithic, a small change, you have to deploy the entire stack again, making a deployment a bit harder than in microservices architecture.
 
-Kubernetes object:-
+5)Kubernetes object:-
 
 In Kubernetes, everything happens by the Kubernetes objects. So whatever we want to create, we are creating a Kubernetes object. Now to start, there are two ways. One is the imperative way, and another way is the declarative way via the YAML files. You can also use JSON to create the objects directly or the curl commands, or the CLI SDKs if you are into programming or want to make the resources via the codes.
 
-View API resources command:-
+6)View API resources command:-
 
 Also, if you want to see the API resources, use the command kubectl api-resources. You will see all the API resources that we can create and some of the short names that we can use. For namespaces, you can use the command kubectl get namespace or kubectl get ns. So you can see the short names. All the API versions of different objects have a listing on the resource list. If you're unsure which object belongs to which API version, you can see them from using kubectl api-resources.
 
-Kubernetes namespace:-
+6)Kubernetes namespace:-
 
 In Kubernetes, namespaces are a way to provide isolated environments to different teams or groups within the same cluster with the specific amount of resource quota and other policies enforced. You can think of it as multiple virtual clusters within the same physical cluster or the same cluster.
 
-Deployment:-
+7)Deployment:-
 
  Let's start by creating a deployment using the kubectl create deployment demo --image=nginx --replicas=3 --port=80 command. Our deployment is created, and we can verify it through kubectl get deploy. We can see it's rolling out, and we can check the status using the kubectl rollout status deployment demo command. We can see that it has successfully rolled out; as a result, we should have three pods running. With the kubectl get pods command, we can see the three pods with the nginx image running.
 
