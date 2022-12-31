@@ -87,4 +87,11 @@ But what Kubernetes can do is, if you have a headless service over here, we remo
 We will define the service name, and we'll be creating the service. Now, Kubernetes helps you manage the StatefulSet, which will help you keep the sticky state session for the pods. However, there are certain aspects that a user must maintain, such as the creation of the headless service. Now, if the data is persistent, it will use PVC or a Persistent Volume Claim. Now, for that, the persistent volume or the volume provisioner has to be taken care of by the user, or they have to be pre-created by the user. It is because this particular thing will be two whenever a new pod comes in place or whenever we scale. Again, whatever the replication method we have created, it will replicate and create a PVC, which will then get connected to or attached to a PV. Then if you have any external mechanism for the external storage, that can be used, but that has to be set by the user.
 
 The scaling will also get a unique identifier and a unique network identifier because it is a StatefulSet. Hence, whenever the deletion happens, deletion also happens in the previous reverse order. So, the last created pod will be the first one to go with the scale down, and then the others will follow, and this is how the scaling down also happens in the reverse order. The scaling up happens in this way where you know what will be the next pod name and the following network identity of the pod name.
-.
+
+8)What are DaemonSets?
+
+DaemonSets in Kubernetes ensure that a copy of the pod runs on all or some nodes. Whenever a new node joins, the same copy of the pod is pinned over there, and whenever a node is removed from the cluster, the pod also gets removed. The DaemonSet controller controls DaemonSet, which is scheduled on all the pods, except for the ones where you cannot schedule the pods, or it's not schedulable, like on a master node.
+
+
+
+
