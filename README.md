@@ -16,7 +16,8 @@ We know that we can pack this application as the images with all its libraries a
 
 Kubernetes architecture:-
 
-![Screenshot (71)](https://user-images.githubusercontent.com/108757431/210139868-da85e399-c8e8-4e9a-a000-efe78bdc1362.png)
+![Screenshot (72)](https://user-images.githubusercontent.com/108757431/210139921-36746754-91d6-4b71-adbf-b707350d25a2.png)
+
 
 
 Monolithic and microservice:-
