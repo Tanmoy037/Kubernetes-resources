@@ -52,4 +52,26 @@ Kubernetes namespace:-
 
 In Kubernetes, namespaces are a way to provide isolated environments to different teams or groups within the same cluster with the specific amount of resource quota and other policies enforced. You can think of it as multiple virtual clusters within the same physical cluster or the same cluster.
 
+Deployment:-
+
+ Let's start by creating a deployment using the kubectl create deployment demo --image=nginx --replicas=3 --port=80 command. Our deployment is created, and we can verify it through kubectl get deploy. We can see it's rolling out, and we can check the status using the kubectl rollout status deployment demo command. We can see that it has successfully rolled out; as a result, we should have three pods running. With the kubectl get pods command, we can see the three pods with the nginx image running.
+
+Setting an image in a deployment
+By default, internally, the replica set automatically gets created with the deployment. We will verify it through the kubectl get rs command. We can see a replica set with a randomly generated hash, and you can see the same hash here with an additional string attached to it. You can see the replica set that has been created. We've specified the desired and current state and how many of them are ready. So, as of now, all pods are in a ready state.
+
+Now, suppose we want to change the image that is running. We will use the kubectl set image deployment/demo --nginx=nginx:1.15.0 --record command. You will see that our image has been updated. Now with the kubectl rollout status deployment demo command, we can see that it's rolling out. It is finishing rolling out, which is how the rolling update works. Hence, it's a 0 downtime upgrade where you have one new pod created, then the traffic routes to that, and the previous one gets deleted once the new pod is ready.
+
+We can see it in more detail. We will apply the kubectl get rs command, and you can see that we have a new replica set, which is 54b, whatever the complete number is. The previous one goes to 0, and the new one goes to 3.
+
+Now, if we use the kubectl get deploy command and we describe the deployment through kubectl describe deployment demo, we'll be able to see what has happened with this in the event section. Let's see that. We can see that 54b is the newer one, and we can also see that initially, it was three deployments. When we changed the image, 54b scaled up to 1. Now, the previous one went down to 2. And then the newer one, 54b, scaled up to 2. This is how the rolling update is working. You can also see the strategy over here. It's a rolling update strategy where you have 25% max unavailable and 25% max surge, which you can also define in the deployment YAML file. This means that 25% of the pods can be unavailable at max during the update, and 25% of the pods can be maximum, meaning they can be an additional pod that can be spurned up. So to what extent, how many pods should there be? It can expect 25% extra of the existing desired state at the time of the update. We have seen the replica set, and also we can see the pods. One more thing we can see is that we changed the image. So now the image of the container is nginx 1.15.0.
+
+What happens when a wrong image is set in a deployment?
+Sometimes, what happens is that supposedly we have given the wrong image. Let's give a wrong image. Hence we'll go back, giving the following command: kubectl set image deployment/demo --nginx=nginx:1.15.abc --record. You will see that it gets updated, but it'll not completely update because we have given the wrong image. If we use the kubectl get pods command, we can see that the pods are running, but it created an extra pod. So the max surge came into the picture, creating an extra pod, and the image ErrPull came. Hence, this pod never got ready, and that's why the previous one never got terminated. That's how it takes care, and the deployment will take care. Now, if we want, we can use the kubectl get rs command as well. There should be three now; this one is the newer one, which isn't ready.
+
+Rollbacking from a wrong image deployment
+We can also do a rollback. Now, how can we do a rollback? By undoing the deployment, basically. We can first see the status through the kubectl rollout history deployment demo command. Now, let's use the rollout command kubectl rollout undo deployment demo --to-revision=2, and we have rolled back. Next, we can use the kubectl get rs command, and we can see that this one will be used as a test, and now, if we use the kubectl get pods command, we can see that we have rolled back. That's how rollback happens. Sometimes the deployment can go wrong. There can be some issues. So that's why this particular feature also helps.
+
+Scaling a deployment
+Another thing that can be done is we can scale the deployment. For that, use the kubectl scale deployment demo --replicas=5. We can see that it has been scaled. Now, if we see, we should have five pods, two of which are in ContainerCreating, which is perfectly fine. So we have five pods, and our desired state has been changed to 5, and if we use the kubectl get rs command, we can see it has been changed to 5.
+
 
