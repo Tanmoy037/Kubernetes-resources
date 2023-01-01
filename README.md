@@ -125,3 +125,8 @@ NodePort: Exposes the Service on each Node's IP at a static port (the NodePort).
 LoadBalancer: Exposes the Service externally using a cloud provider's load balancer.
 ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value.
 You can read more about Services in the Kubernetes documentation: https://kubernetes.io/docs/concepts/services-networking/service/
+
+13)What is ClusterIP?
+
+ ClusterIP is the default type. So, if you don't specify any type, this will be used. In ClusterIP, our endpoint, our service, will only be accessible from within the cluster, not from the outside world. ClusterIP is not used to route traffic from the outside world, only traffic within the cluster. So, anything happening within a cluster can be routed through ClusterIP.
+the service describes the different rules and configurations used to access our different pods or deployment resources. So, if we go ahead and check everything that we have within our Kubernetes by using the command kubectl get all -n example, we can see that I have redeployed the service. Now, we have ClusterIP running. We have a ClusterIP endpoint. Now, this is the endpoint, the IP address accessible within the cluster only. And then we have here the port over which it's accessible. So, now, we have the different resources that I described before.
