@@ -93,5 +93,11 @@ The scaling will also get a unique identifier and a unique network identifier be
 DaemonSets in Kubernetes ensure that a copy of the pod runs on all or some nodes. Whenever a new node joins, the same copy of the pod is pinned over there, and whenever a node is removed from the cluster, the pod also gets removed. The DaemonSet controller controls DaemonSet, which is scheduled on all the pods, except for the ones where you cannot schedule the pods, or it's not schedulable, like on a master node.
 
 
+9)How does container to container networking take place?
+
+Firstly, we have an ethernet device that allows for network traffic in and out of the virtual machine. But on top of this, we have a network namespace. Network namespace is the ability to partition the network layer into isolated stacks per process. Hence, we have a root network namespace, but what we're going to do is when we create a new pod, we define the pod as having its own network namespace. So, in this occurrence, we'll call it mypodns which approximately amounts to /var/run/netns/mypodns as a file directory path, and that is a mount point for the processes from our containers.
+
+This also means the second part is that when we launch a container, we have to rely upon the docker command of the net container function to link these containers into the pod network namespace. This means the pods can communicate as if they're on the local host. In conjunction with this, the mypod network namespace is attached to the root network namespace, allowing communication with the outside world.
+
 
 
