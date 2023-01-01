@@ -114,6 +114,14 @@ What effectively happens is when flannel0 is set up, flanneld will be setting up
 
 It then uses a UDP Send to the node in question, which is intercepted by the flannel daemon running there, which performs the inverse activity going down through the flannel0 tunnel into the kernel, then back up. Still, the routing table will push it towards the local Docker bridge. It will move up over the L3 into the veth, across the network namespace, and up into the container. Therefore, that illustrates how Flannel enables quite an esoteric problem in a very simplistic way. It gives us a ton of addressable IPs and enables us to plug this in and not think about it too much so that once it's configured, it just starts working. The thing to say about Flannel in terms of performance is that there is a penalty of the transaction between user and kernel level that other CNIs have ways around by slightly different implementations. And this is one of many of a variety of implementations on how to use IPAM and send IP packets across the network.
 
-I hope this has been useful to give a high level of what a CNI is, how you can implement a CNI, the technologies behind the principles, and the layers they're working on to get your packets where they need to go.
+12)kubernetes services:-
 
-Thank you very much.
+In Kubernetes, a Service is an abstraction that defines a logical set of Pods and a policy by which to access them. For example, a single Service might expose a set of Pods as a backend for a load balancer. Services are used to expose the functionality of your applications to other applications and users.
+
+There are several types of Services in Kubernetes, including:
+
+ClusterIP: Exposes the Service on a cluster-internal IP. It is only reachable from within the cluster.
+NodePort: Exposes the Service on each Node's IP at a static port (the NodePort). You can reach the Service by requesting <NodeIP>:<NodePort>.
+LoadBalancer: Exposes the Service externally using a cloud provider's load balancer.
+ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value.
+You can read more about Services in the Kubernetes documentation: https://kubernetes.io/docs/concepts/services-networking/service/
