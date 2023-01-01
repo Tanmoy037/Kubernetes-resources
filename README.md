@@ -130,3 +130,13 @@ You can read more about Services in the Kubernetes documentation: https://kubern
 
  ClusterIP is the default type. So, if you don't specify any type, this will be used. In ClusterIP, our endpoint, our service, will only be accessible from within the cluster, not from the outside world. ClusterIP is not used to route traffic from the outside world, only traffic within the cluster. So, anything happening within a cluster can be routed through ClusterIP.
 the service describes the different rules and configurations used to access our different pods or deployment resources. So, if we go ahead and check everything that we have within our Kubernetes by using the command kubectl get all -n example, we can see that I have redeployed the service. Now, we have ClusterIP running. We have a ClusterIP endpoint. Now, this is the endpoint, the IP address accessible within the cluster only. And then we have here the port over which it's accessible. So, now, we have the different resources that I described before.
+
+14)NodePort:-
+
+if we have our Kubernetes cluster and different nodes running within this cluster, they all will have different endpoints that we can connect to. So now, in the case of ClusterIP, our IP address will only be accessible from within the nodes within our cluster, they won't be accessible cluster-wide, and this is where type NodePort comes in.
+
+We have the nodes and services. And then, we want to connect dynamically with the different nodes within the environment, and we want to have a standard way of connecting to those different nodes. And this is where we can specify NodePorts.
+
+With NodePorts, we can specify a range of ports between 30,000 to 32,000. So, it's like the port address. And then we have, for instance, a port NodePort of 31,520 or something, something like that, specified for our NodePort. Now, it's only accessible within that range. So, in most cases, you want Kubernetes to choose the NodePort for you within the different range, and then you can configure external traffic. So, let's say there is traffic from the outside world, and we want to route the traffic into our cluster. We can then set up our load-balancing traffic routing solution, and they will all connect to our NodePort here.
+
+15)
