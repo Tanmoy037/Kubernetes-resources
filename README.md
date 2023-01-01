@@ -139,4 +139,6 @@ We have the nodes and services. And then, we want to connect dynamically with th
 
 With NodePorts, we can specify a range of ports between 30,000 to 32,000. So, it's like the port address. And then we have, for instance, a port NodePort of 31,520 or something, something like that, specified for our NodePort. Now, it's only accessible within that range. So, in most cases, you want Kubernetes to choose the NodePort for you within the different range, and then you can configure external traffic. So, let's say there is traffic from the outside world, and we want to route the traffic into our cluster. We can then set up our load-balancing traffic routing solution, and they will all connect to our NodePort here.
 
-15)
+15)What is a load balancer?
+ 
+ We can use the type LoadBalancer. A LoadBalancer, basically as a type-service, allows us to dynamically route the traffic between services to those different pods within those different nodes. So, we will be able to access from the outside world through an external IP address, our application running within our Kubernetes cluster. Now, I'm telling you to be careful because this will open up an external IP address to your application without any additional rules. So, that's where in most cases, you would want to use an ingress or a service mesh of sorts that utilizes ingress to access your application from the outside world.
