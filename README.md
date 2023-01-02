@@ -142,3 +142,11 @@ With NodePorts, we can specify a range of ports between 30,000 to 32,000. So, it
 15)What is a load balancer?
  
  We can use the type LoadBalancer. A LoadBalancer, basically as a type-service, allows us to dynamically route the traffic between services to those different pods within those different nodes. So, we will be able to access from the outside world through an external IP address, our application running within our Kubernetes cluster. Now, I'm telling you to be careful because this will open up an external IP address to your application without any additional rules. So, that's where in most cases, you would want to use an ingress or a service mesh of sorts that utilizes ingress to access your application from the outside world.
+ 
+16)Now, emptyDir volume gets created as soon as the Pod is assigned to the node and it stays throughout the lifespan of the Pod. But with the deletion of a pod, the emptyDir also gets a removal. There can be specific use cases that emptyDir can be used, such as the scratch space for some sorting algorithm or the checkpointing of a long computation in the RAM.
+
+EmptyDir can be either based on the node's disk attached to the node or, if you specify the emptyDir medium over here instead of the empty braces, it will create a temporary TMPFS and use the RAM as the volume for that. So we can write it in a yaml file, then in the container section, we can see the image, name, and command, which is simple. Now, this is the critical piece where we define the emptyDir volume. To specify, in the volume section, we say emptyDir: {} if you want the disk volume or the medium as memory or if you want to have RAM. Then next is the volumeMount, where we mount that specific emptyDir into a particular directory inside the container. So this was all about emptyDir.
+
+17)What is a hostPath?
+
+a hostPath volume mounts a file or a directory from the node's file system into the Pod. A hostPath will mount a directory, which is present on the node and mounted inside the container.
