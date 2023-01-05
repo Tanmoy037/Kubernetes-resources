@@ -151,4 +151,3 @@ EmptyDir can be either based on the node's disk attached to the node or, if you 
 
 a hostPath volume mounts a file or a directory from the node's file system into the Pod. A hostPath will mount a directory, which is present on the node and mounted inside the container.
 
-18)
