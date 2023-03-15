@@ -1,0 +1,23 @@
+kubectl get all
+
+kubectl get deploy  -- kubectl will talk to api server and give information about deployment
+
+
+kubectl get pods
+
+kubectl get pods -o wide
+
+kubectl get pods -v=7
+
+
+minikube ssh 
+curl (-L --redirect) http://172.17.0.5:3000 (port)
+
+
+
+kubectl get svc -v=9
+
+kubectl get svc 
+
+
+
