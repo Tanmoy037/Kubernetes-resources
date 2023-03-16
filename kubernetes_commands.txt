@@ -20,4 +20,9 @@ kubectl get svc -v=9
 kubectl get svc 
 
 
+minikube service list --- 
+This will list all the services in your cluster, along with their URLs. If you see <your-deployment> listed here, you can use the corresponding URL to access your project in a web browser.
+
+
+
 
