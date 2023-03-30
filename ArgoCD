@@ -1,0 +1,1 @@
+command to retrieve password from argocd after installing-    kubectl --namespace argocd get secret argocd-initial-admin-secret -o json | jq -r '.data.password' | base64 -d
