@@ -1,0 +1,1 @@
+helm install -f flaskHelloDeploy/values.yaml flask-hello-v2 ./flaskHelloDeploy
