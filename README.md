@@ -1,12 +1,12 @@
 # Kubernetes
 
-1)What is kubernetes?
+**1)What is kubernetes?**
 
 ubernetes is a platform-agnostic system for automating the deployment, scaling, and management of containerized applications. It helps you deploy and manage applications in a consistent and reliable manner, regardless of where they are running, and provides a way to achieve high availability by automatically replicating and rescheduling applications across multiple machine.
 Kubernetes (also known as K8s) is an open-source system. It was originally developed by Google and they donated to CNCF in 2014 and is now maintained by the Cloud Native Computing Foundation (CNCF).
 So, basically Kubernetes is a container orchestration tool.
 
-2)Why we should use Kubernetes?
+**2)Why we should use Kubernetes?**
 
 Kubernetes is its ability to automate the deployment, scaling, and management of applications in a consistent and reliable manner. It provides features such as self-healing, rolling updates, and resource management, which make it easier to deploy and manage applications at scale.
 
@@ -14,7 +14,7 @@ Introduction to container orchestration:-
 
 We know that we can pack this application as the images with all its libraries and dependencies and run them as containers. So running a few containers is fine, but when you see a production-ready scenario where you want to run thousands of containers, you need container orchestration because you cannot create, manage, and do many things manually.
 
-3)Kubernetes architecture:-
+**3)Kubernetes architecture :-**
 
 What is Kubelet in Kubernetes?
 
