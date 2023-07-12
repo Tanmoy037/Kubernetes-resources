@@ -16,15 +16,15 @@ We know that we can pack this application as the images with all its libraries a
 
 **3)Kubernetes architecture :-**
 
-What is Kubelet in Kubernetes?
+**What is Kubelet in Kubernetes?**
 
 Firstly, the request is authenticated with the headers that are passed, and then based on the RBAC rules, it is authorized whether that particular user is allowed to create a pod. Now, the scheduler will find the best fit node for the specific pod. The scheduler has all the information about the nodes, about the resources. So based on the resources, the taints, tolerations, and node affinity, it will try to find the best fit node within the cluster to run the pod. Now, it gives the node information back to the API server. Again, it tells me that this node has to run this particular workload. Now what happens is, on the worker node side, the main component is kubelet. Also, kubelet will keep asking the API server whether I have some workload to run. As soon as the scheduler says, "Okay, this workload has to run on node one, " the API server will inform "you need to run this workload." When the kubelet gets this information, it does all the fetching of images using the container runtime. So container runtime, like Containerd or Docker, will pull the image then run the pod with the right set of defined configurations. Then a pod will run with a single or multiple containers, whatever is defined in the pod specification.
 
-What is Kube-proxy?
+**What is Kube-proxy?**
 
 Another component in worker nodes is Kube-proxy, the core network component of Kubernetes that manages all the networking and communication across the cluster. So your port-to-port communications, all the communication, all the rules are taken care of by Kube-proxy. And there is a controller manager component in the master node, which runs on the control plane. The controller manager is a set of controllers running a replication set controller. So if we create a deployment, then we define the number of replicas that we have to run, which is taken care of by the replication controller. If we make a DaemonSet object that needs this particular workload to run on all the nodes, the DaemonSet controller does that. So like this, there are different sets of controllers, and collectively it is called controller manager. It controls the Kubernetes cluster and the state within which they are running three replicas and all those things.
 
-What is ETCD?
+**What is ETCD?**
 
 ETCD is a highly available key-value database for Kubernetes that stores all the information of all the resources and objects running in the cluster. Now, the API server is responsible for storing all that information in ETCD. So if any pod spec or anything there is changing, the cluster state stored in ETCD is maintained in ETCD. So the Kubernetes architecture is on a very high level. On the master node, you have an API server, which we can consider as the brain. Then, you have the scheduler that schedules the node and the controller manager having various sets of controllers that control the workloads across the cluster. Then the kubelet always communicates with the API server and keeps updating the workload status that it is running. It is also responsible for pulling the image using the container runtime and then running the pod, which is eventually the module container. Then the Kube-proxy is the networking component that makes the network communication within the cluster. And the nodes are the VMs or the bare metal machines.
 
@@ -32,7 +32,7 @@ ETCD is a highly available key-value database for Kubernetes that stores all the
 
 
 
-4)Monolithic and microservice:-
+**4)Monolithic and microservice:-**
 
 monolithic and microservices. To understand the concept correctly, think of a movie ticket booking application. Now, whenever you try to book a ticket, go to the UI, sign up, book a ticket, go to the payment checkout, and get a movie ticket confirmation.
 
@@ -40,19 +40,19 @@ Deployment with Monolithic vs Microservice architecture:-
 
 Monolithic applications take more time to deploy and are not a fail-fast model. In contrast, in microservices, you can deploy individual components. You can deploy daily, even hourly, when you have minimal changes. You can deploy those changes on individual components in a light production environment. So, yes, there are companies that are doing that. Whether you have a simple application or a simple component change that you want to deploy on a live application, you can do that. In contrast, in monolithic, a small change, you have to deploy the entire stack again, making a deployment a bit harder than in microservices architecture.
 
-5)Kubernetes object:-
+**5)Kubernetes object:-**
 
 In Kubernetes, everything happens by the Kubernetes objects. So whatever we want to create, we are creating a Kubernetes object. Now to start, there are two ways. One is the imperative way, and another way is the declarative way via the YAML files. You can also use JSON to create the objects directly or the curl commands, or the CLI SDKs if you are into programming or want to make the resources via the codes.
 
-6)View API resources command:-
+**6)View API resources command:-**
 
 Also, if you want to see the API resources, use the command kubectl api-resources. You will see all the API resources that we can create and some of the short names that we can use. For namespaces, you can use the command kubectl get namespace or kubectl get ns. So you can see the short names. All the API versions of different objects have a listing on the resource list. If you're unsure which object belongs to which API version, you can see them from using kubectl api-resources.
 
-6)Kubernetes namespace:-
+**6)Kubernetes namespace:-**
 
 In Kubernetes, namespaces are a way to provide isolated environments to different teams or groups within the same cluster with the specific amount of resource quota and other policies enforced. You can think of it as multiple virtual clusters within the same physical cluster or the same cluster.
 
-7)Deployment:-
+**7)Deployment:-**
 
  Let's start by creating a deployment using the kubectl create deployment demo --image=nginx --replicas=3 --port=80 command. Our deployment is created, and we can verify it through kubectl get deploy. We can see it's rolling out, and we can check the status using the kubectl rollout status deployment demo command. We can see that it has successfully rolled out; as a result, we should have three pods running. With the kubectl get pods command, we can see the three pods with the nginx image running.
 
