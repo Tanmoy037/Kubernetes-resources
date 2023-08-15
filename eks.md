@@ -1,6 +1,8 @@
-eksctl create cluster --name game-deploy --region ap-south-1 --fargate
+**To Create Eks cluster using Eksctl**
+```eksctl create cluster --name game-deploy --region ap-south-1 --fargate ```
 
-aws eks update-kubeconfig --name game-deploy --region ap-south-1
+**For using Kubectl**
+```aws eks update-kubeconfig --name game-deploy --region ap-south-1```
 
 **To create new fargate profile(namespace)**
 
