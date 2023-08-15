@@ -13,4 +13,7 @@ eksctl create fargateprofile \
     --name alb-sample-app \
     --namespace game-2048
 ```
-       
+
+**commands to configure IAM OIDC provider**
+
+```eksctl utils associate-iam-oidc-provider --cluster game-deploy --approve```
