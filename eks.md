@@ -19,3 +19,7 @@ eksctl create fargateprofile \
 **commands to configure IAM OIDC provider**
 
 ```eksctl utils associate-iam-oidc-provider --cluster game-deploy --approve```
+
+**Download IAM policy**
+
+```curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json```
