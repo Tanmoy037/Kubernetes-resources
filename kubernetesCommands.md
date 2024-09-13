@@ -34,6 +34,7 @@ This README provides a comprehensive list of common kubectl commands for managin
 | `kubectl scale --replicas=<num> deployment/<deployment_name>` | Scale a deployment to a specified number of replicas |
 | `kubectl rollout status deployment/<deployment_name>` | Show the rollout status of a deployment |
 | `kubectl rollout undo deployment/<deployment_name>` | Roll back a deployment to a previous revision |
+| `kubectl run static-busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- sleep 1000 > static-busy.yaml` | Create a pod as a static pod in /etc/kubernetes/manifests |
 
 ## Service Management
 
@@ -92,6 +93,4 @@ This README provides a comprehensive list of common kubectl commands for managin
 | `kubectl top nodes` | Display resource usage of nodes |
 | `kubectl top pods` | Display resource usage of pods |
 | `kubectl edit <resource_type> <resource_name>` | Edit a resource on the server |
-| `kubectl label <resource_type> <resource_name> <label_key>=<label_value>` | Add or update a label on a resource |
-| `kubectl annotate <resource_type> <resource_name> <annotation_key>=<annotation_value>` | Add or update an annotation on a resource |
-| `kubectl get events` | List all events in the cluster |
+| `kubectl label <resource_type> <resource_name> <label_key>=<label_value>` | Add or update a label on a
